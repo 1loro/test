@@ -1,4 +1,3 @@
-// Inicializar los iconos de Feather
 document.addEventListener('DOMContentLoaded', () => {
     feather.replace();
     initializeApp();
@@ -88,13 +87,20 @@ function initializeApp() {
                     </div>
                     <div class="debt-amount">
                         <span class="${isCreditor ? 'amount-owing' : 'amount-owed'}">$${debtor.amount}</span>
-                        <button class="icon-button glass-effect">
+                        <button class="icon-button glass-effect delete-button">
                             <i data-feather="arrow-right"></i>
                         </button>
                     </div>
                 </div>
             `;
             container.appendChild(debtItem);
+
+            // Agregar evento de clic al botón de eliminar
+            const deleteButton = debtItem.querySelector('.delete-button');
+            deleteButton.addEventListener('click', () => {
+                deleteDebt(debtor.id);
+            });
+
             feather.replace();
         });
     }
@@ -130,5 +136,10 @@ function initializeApp() {
         debtors.push(newDebt);
         renderData();
         closeModal();
+    }
+
+    function deleteDebt(debtId) {
+        debtors = debtors.filter(debtor => debtor.id !== debtId);
+        renderData();
     }
 }
