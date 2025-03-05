@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.5</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de Feather -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <button class="icon-button glass-effect">
+                <i data-feather="menu"></i>
+            </button>
+            <h1 class="title"></h1>
+            <div class="header-icons">
+                <button class="icon-button glass-effect">
+                    <i data-feather="user"></i>
+                </button>
+                <button class="icon-button glass-effect">
+                    <i data-feather="search"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Resumen de deudas -->
+        <div class="summary-container">
+            <div class="card glass-effect">
+                <div class="card-header">
+                    <h2 class="card-title">Debo</h2>
+                </div>
+                <div class="card-content">
+                    <div class="card-summary">
+                        <span class="amount" id="total-owed">$0</span>
+                        <div class="avatar-group" id="owed-avatars"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card glass-effect">
+                <div class="card-header">
+                    <h2 class="card-title">Me deben</h2>
+                </div>
+                <div class="card-content">
+                    <div class="card-summary">
+                        <span class="amount" id="total-owed-to-me">$0</span>
+                        <div class="avatar-group" id="owed-to-me-avatars"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de deudores -->
+        <div class="list-section">
+            <h2 class="section-title">Deudores</h2>
+            <div id="debtors-list" class="debt-list"></div>
+        </div>
+
+        <!-- Lista de acreedores -->
+        <div class="list-section">
+            <h2 class="section-title">Debo a</h2>
+            <div id="creditors-list" class="debt-list"></div>
+        </div>
+
+        <!-- Botón flotante para agregar -->
+        <button id="add-button" class="floating-button">
+            <i data-feather="plus"></i>
+        </button>
+
+        <!-- Modal para agregar deuda -->
+        <div id="add-modal" class="modal">
+            <div class="modal-content glass-effect">
+                <div class="modal-header">
+                    <h2 class="modal-title">Agregar nueva deuda</h2>
+                    <button id="close-modal" class="close-button">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" placeholder="Nombre de la persona" class="glass-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Cantidad ($)</label>
+                        <input type="number" id="amount" placeholder="Monto de la deuda" class="glass-input">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="is-owed-by-me">
+                        <label for="is-owed-by-me">Yo soy el deudor</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-debt" class="button primary glass-button">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
